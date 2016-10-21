@@ -3,6 +3,7 @@
 namespace Controllers\Web;
 
 use \Services\Repository\RepositoryInterface;
+use \Services\NameResolver\StudentNameResolver;
 
 class StudentsController extends \Controllers\Web\WebController {
 
@@ -18,7 +19,7 @@ class StudentsController extends \Controllers\Web\WebController {
 	public function list($request, $response, $args) {
 		$students = $this->studentRepository->getAll();
 
-		resolve($students);
+        $this->studentNameResolver->resolve($students);
 
 		$response = $this->view->render($response, 'students.html', ['students' => $students]);
 		return $response;
