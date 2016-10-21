@@ -5,34 +5,23 @@ class StudentNameResolver implements NameResolverInterface {
 
     public function resolve($users) {
 
-//        if(count(array_unique($users->firstName))<count($users->firstName))
-//        {
-//            echo "duplicate";
-//        }
-//        else {
-//            echo "not duplicate";
-//        }
-
-
         foreach ($users as $index => $user) {
-//            echo $user->firstName;
-//            echo $user->lastName;
-
 
             $firstNames[] = $user->firstName;
-
+            $lastNames[] = $user->lastName;
 
             $user->displayName = $user->firstName;
-            echo $user->displayName;
-            echo "<br>";
+
         }
 
-
-        for ($current = 0; $current < count($firstNames);$current++) {
-            if (in_array($firstNames[$current],$firstNames)) {
-                echo "duplicate";
+        $ref = 0;
+        foreach ($firstNames as $current) {
+            $ref++;
+            $count = array_count_values($firstNames);
+            if (  $count[$current] > 1 )  {
+                echo $current . ", " . $lastNames[$ref] . "<br>";
             } else {
-                echo "NONduplicate";
+                echo $current . "<br>";
             }
         }
 
