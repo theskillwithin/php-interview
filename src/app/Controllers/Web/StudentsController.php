@@ -16,7 +16,7 @@ class StudentsController extends \Controllers\Web\WebController {
 	public function list($request, $response, $args) {
 		$students = $this->studentRepository->getAll();
 
-		// TODO: Resolve display names here
+		resolve($students);
 
 		$response = $this->view->render($response, 'students.html', ['students' => $students]);
 		return $response;

@@ -1,10 +1,13 @@
 <?php
 namespace Services\NameResolver;
 
-abstract class StudentNameResolver implements NameResolverInterface {
+class StudentNameResolver implements NameResolverInterface {
 
     public function resolve($users) {
-        var_dump($users);
+        foreach ($users as $user) {
+            echo $user . "\n";
+            echo "test";
+        }
     }
 
 }
