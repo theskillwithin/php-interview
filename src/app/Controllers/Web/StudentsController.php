@@ -7,10 +7,12 @@ use \Services\Repository\RepositoryInterface;
 class StudentsController extends \Controllers\Web\WebController {
 
 	protected $studentRepository;
+    protected $studentNameResolver;
 
 	public function __construct($container) {
 		parent::__construct($container);
 		$this->studentRepository = $this->container['student_repository'];
+        $this->studentNameResolver = $this->container['student_name_resolver'];
 	}
 
 	public function list($request, $response, $args) {
