@@ -10,17 +10,15 @@ class StudentNameResolver implements NameResolverInterface {
             $firstNames[] = $user->firstName;
             $lastNames[] = $user->lastName;
 
-            $user->displayName = $user->firstName;
-
         }
 
         $ref = 0;
         $count = array_count_values($firstNames);
         foreach ($firstNames as $current) {
             if (  $count[$current] > 1 )  {
-                echo $current . " " . substr($lastNames[$ref],0,1) . "<br>";
+                $users{$ref}->displayName = $current . " " . substr($lastNames[$ref],0,1);
             } else {
-                echo $current . "<br>";
+                $users{$ref}->displayName = $current;
             }
             $ref++;
         }
